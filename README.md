@@ -1,37 +1,46 @@
-# react-three-is-awsome
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# React Three Physics Playground
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-000000?logo=nextdotjs&logoColor=white)
+![React Three Fiber](https://img.shields.io/badge/3D-React_Three_Fiber-049EF4?logo=threedotjs&logoColor=white)
+![Rapier](https://img.shields.io/badge/physics-Rapier-ef4444)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+A small browser-based 3D playground for experimenting with React Three Fiber controls and rigid-body physics.
+
+</div>
+
+```mermaid
+flowchart LR
+  INPUT["Keyboard input"] --> PLAYER["Controllable box"]
+  PLAYER --> PHYSICS["Rapier physics world"]
+  BOXES["Dynamic boxes and spheres"] --> PHYSICS
+  GROUND["Fixed ground collider"] --> PHYSICS
+  PHYSICS --> SCENE["React Three Fiber scene"]
+  SCENE --> CANVAS["Browser WebGL canvas"]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Keyboard-controlled 3D box.
+- Dynamic cube and sphere rigid bodies.
+- Ground collider, gravity, lighting, and camera controls.
+- Next.js client-side scene composition.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Run
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm start
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The main experiment lives in `app/components/Scene.tsx`; `app/page.tsx` mounts it into the Next.js application.
